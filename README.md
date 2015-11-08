@@ -1,0 +1,2 @@
+# couchdb
+Exercise 7
