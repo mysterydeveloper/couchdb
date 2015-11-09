@@ -73,6 +73,7 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 
     ```sh
     curl -X PUT http://yourdb.smileupps.com/emails/[_id] -d '{ "read" : true, "_rev" : "[_rev]" }'
+    ```
 
 1. Now get your document and make sure the change was saved.
 
