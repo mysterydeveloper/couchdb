@@ -24,14 +24,14 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 
 ## Exercises
     
-1. Go to the [Iris Couch website](http://www.iriscouch.com/) and set up a free CouchDB instance.
+1. Go to the [Smileupps CouchDB website](https://www.smileupps.com/store/apps/couchdb) and set up a free CouchDB instance.
 
 1. Explore the Futon interface.
 
 1. Create a CouchDB database for storing emails using curl.
 
     ```sh
-    curl -X PUT http://yourdb.iriscouch.com/emails
+    curl -X PUT http://yourdb.smileupps.com/emails
     ```
 
 1. Create a file called email1.json with the following contents.
@@ -46,10 +46,10 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
     }
     ```
 
-1. Use curl to create a document based on the JSON in your Iris Couch CouchDB database.
+1. Use curl to create a document based on the JSON in your Smileups CouchDB database.
 
     ```sh
-    curl -X POST http://yourdb.irishcouch.com/emails -H "Content-Type: application/json" -d @email1.json
+    curl -X POST http://yourdb.smileupps.com/emails -H "Content-Type: application/json" -d @email1.json
     ```
     
 1. Examine the response from the previous step. Note that you are shown the id and rev of the document.
@@ -58,13 +58,13 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 1. Use curl to get all of the documents from the database.
 
     ```sh
-    curl -X GET http://yourdb.irishcouch.com/emails/_all_docs
+    curl -X GET http://yourdb.smileupps.com/emails/_all_docs
     ```
 
 1. Do the same again, but this time including the document contents. Note the URL encoded data.
 
     ```sh
-    curl -X GET http://yourdb.irishcouch.com/emails/_all_docs?include_docs=true
+    curl -X GET http://yourdb.smileupps.com/emails/_all_docs?include_docs=true
     ```
 
 1. Examine the response from the previous step. 
@@ -72,12 +72,12 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 1. Update your document, changing the read property to true. You must replace [_id] and [_rev] with your documents id and rev.
 
     ```sh
-    curl -X PUT http://yourdb.irishcouch.com/emails/[_id] -d '{ "read" : true, "_rev" : "[_rev]" }'
+    curl -X PUT http://yourdb.smileupps.com/emails/[_id] -d '{ "read" : true, "_rev" : "[_rev]" }'
 
 1. Now get your document and make sure the change was saved.
 
     ```sh
-    curl http://yourdb.irishcouch.com/emails/[_id]
+    curl http://yourdb.smileupps.com/emails/[_id]
     ```
     
 ## Advanced exercises
@@ -92,7 +92,7 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 
 - [CoucDB - The Definitive Guide](http://guide.couchdb.org/editions/1/en/index.html)
 
-- [Iris Couch](http://www.iriscouch.com/) - a free CouchDB hosting service.
+- [Smileupps](https://www.smileupps.com/store/apps/couchdb) - a free CouchDB hosting service.
 
 - Tutorialspoint [CouchDB Tutorial](http://www.tutorialspoint.com/couchdb/index.htm).
 
