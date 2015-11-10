@@ -31,7 +31,7 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 1. Create a CouchDB database for storing emails using curl.
 
     ```sh
-    curl -X PUT http://yourdb.smileupps.com/emails
+    curl -X PUT http://admin:password@subdomain.smileupps.com/emails
     ```
 
 1. Create a file called email1.json with the following contents.
