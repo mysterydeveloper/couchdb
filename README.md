@@ -26,7 +26,9 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
     
 1. Go to the [Smileupps CouchDB website](https://www.smileupps.com/store/apps/couchdb) and set up a free CouchDB instance.
 
-1. Explore the Futon interface.
+1. Give your CouchDB instance a subdomain on smileupps.com.
+
+1. Explore the Futon interface, and log in as admin with the password supplied by email to you.
 
 1. Create a CouchDB database for storing emails using curl.
 
@@ -49,7 +51,7 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 1. Use curl to create a document based on the JSON in your Smileups CouchDB database.
 
     ```sh
-    curl -X POST http://yourdb.smileupps.com/emails -H "Content-Type: application/json" -d @email1.json
+    curl -X POST http://admin:password@subdomain.smileupps.com/emails -H "Content-Type: application/json" -d @email1.json
     ```
     
 1. Examine the response from the previous step. Note that you are shown the id and rev of the document.
@@ -58,27 +60,40 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 1. Use curl to get all of the documents from the database.
 
     ```sh
-    curl -X GET http://yourdb.smileupps.com/emails/_all_docs
+    curl -X GET http://subdomain.smileupps.com/emails/_all_docs
     ```
 
 1. Do the same again, but this time including the document contents. Note the URL encoded data.
 
     ```sh
-    curl -X GET http://yourdb.smileupps.com/emails/_all_docs?include_docs=true
+    curl -X GET http://subdomain.smileupps.com/emails/_all_docs?include_docs=true
     ```
 
 1. Examine the response from the previous step. 
 
-1. Update your document, changing the read property to true. You must replace [_id] and [_rev] with your documents id and rev.
+1. Create a file called email1v2.json with the following contents. Replace [_rev] with your document's previous revision number.
+
+    ```json
+    {
+      "_rev": "[_rev]"
+      , "from": "bill.gates@microsoft.com"
+      , "to": "michael.dell@dell.com"
+      , "subject": "PCs"
+      , "content": "Hi Michael, I like your PCs. From Bill"
+      , "read": true
+    }
+    ```
+
+1. Update your document, changing the read property to true. You must replace [_id] with your document's idv.
 
     ```sh
-    curl -X PUT http://yourdb.smileupps.com/emails/[_id] -d '{ "read" : true, "_rev" : "[_rev]" }'
+    curl -X PUT http://admin:password@subdomain.smileupps.com/emails/[_id] -d @email1v2.json
     ```
 
 1. Now get your document and make sure the change was saved.
 
     ```sh
-    curl http://yourdb.smileupps.com/emails/[_id]
+    curl http://subdomain.smileupps.com/emails/[_id]
     ```
     
 ## Advanced exercises
