@@ -30,7 +30,7 @@ In this exercise we will look at the document-oriented NoSQL database CouchDB, a
 
 1. Explore the Futon interface, and log in as admin with the password supplied by email to you.
 
-1. Create a CouchDB database for storing emails using curl.
+1. Create a CouchDB database for storing emails using curl. Replace subdomain with your own subdomain.
 
     ```sh
     curl -X PUT http://admin:password@subdomain.smileupps.com/emails
